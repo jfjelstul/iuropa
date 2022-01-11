@@ -9,5 +9,6 @@ iuropa.Rproj
 *.toc
 *.aux
 build/
+data-raw/
 _source/
 _archive/
