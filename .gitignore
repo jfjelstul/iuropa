@@ -9,4 +9,5 @@ iuropa.Rproj
 *.toc
 *.aux
 build/
-codebook/source/
+codebook/_source/
+_archive/
