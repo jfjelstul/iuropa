@@ -8,3 +8,5 @@ iuropa.Rproj
 *.synctex.gz
 *.toc
 *.aux
+build/
+codebook/source/
