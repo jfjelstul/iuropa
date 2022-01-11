@@ -1,0 +1,10 @@
+
+.DS_Store
+.Rhistory
+iuropa.Rproj
+.Rproj.user*
+*.out
+*.log
+*.synctex.gz
+*.toc
+*.aux
