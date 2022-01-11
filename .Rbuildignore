@@ -1,0 +1,5 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^build/$
+^codebook/$
+^data-raw/$
