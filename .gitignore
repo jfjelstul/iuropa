@@ -12,3 +12,4 @@ build/
 data-raw/
 _source/
 _archive/
+.Rproj.user
