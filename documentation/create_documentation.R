@@ -17,7 +17,7 @@ variables <- read.csv("documentation/CJEU-database-platform/codebook-data/CJEU-d
 
 # create a codebook
 codebookr::create_codebook(
-  file_path = "documentation/CJEU-database-platform/codebook/codebook.tex",
+  file_path = "documentation/CJEU-database-platform/codebook/CJEU-database-platform-codebook.tex",
   datasets_input = datasets,
   variables_input = variables,
   title_text = "The CJEU Database Platform",
