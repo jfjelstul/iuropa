@@ -28,7 +28,7 @@ run_quietly <- function(x) {
 }
 
 get_api_address <- function() {
-  "http://api.iuropa.pol.gu.se/"
+  "https://api.iuropa.pol.gu.se/"
 }
 
 build_api_url <- function(route = NULL, parameters = NULL) {

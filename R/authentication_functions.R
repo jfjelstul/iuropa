@@ -38,7 +38,7 @@ authenticate <- function(username, password) {
   if(response$status_code != 200) {
     stop(response_content)
   } else {
-    cat("Authentication successful! You will stay connected for 30 minutes.")
+    cat("Authentication successful! You will stay connected for 2 hours.")
     token <- jsonlite::fromJSON(response_content, flatten = TRUE)$token
   }
   session <- list(
