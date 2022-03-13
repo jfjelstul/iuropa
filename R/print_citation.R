@@ -36,11 +36,11 @@ print_citation <- function(component, version) {
   cat("\n")
 
   if (component == "cjeu_database_platform") {
-    cat("Brekke, Stein Arne, Joshua Fjelstul, Silje Synnøve Lyder Hermansen and Daniel Naurin. 2021 \"The CJEU Database Platform: Decisions and Decision-Makers (Stable Release ", version, ")\", in Lindholm, Johan, Daniel Naurin, Urska Sadl, Anna Wallerman Ghavanini, Stein Arne Brekke, Joshua Fjelstul, Silje Synnøve Lyder Hermansen, Olof Larsson, Andreas Moberg, Moa Näsström, Michal Ovádek, Tommaso Pavone, and Philipp Schroeder, The Court of Justice of the European Union Database, IUROPA, URL: http://iuropa.pol.gu.se/.\n", sep = "")
+    cat("Brekke, Stein Arne, Joshua Fjelstul, Silje Synnøve Lyder Hermansen and Daniel Naurin. 2021 \"The CJEU Database Platform: Decisions and Decision-Makers (Stable Release ", version, ")\", in Lindholm, Johan, Daniel Naurin, Urska Sadl, Anna Wallerman Ghavanini, Stein Arne Brekke, Joshua Fjelstul, Silje Synnøve Lyder Hermansen, Olof Larsson, Andreas Moberg, Moa Näsström, Michal Ovádek, Tommaso Pavone, and Philipp Schroeder, The Court of Justice of the European Union Database, IUROPA, URL: https://www.iuropa.pol.gu.se/.\n", sep = "")
   }
 
   if (component == "cjeu_text_corpus") {
-    cat("Fjelstul, Joshua, Johan Lindholm, Daniel Naurin, and Michal Ovádek 2021. \"The CJEU Database Text Corpus (Version ", version, ")\", in Lindholm, Johan, Daniel Naurin, Urska Sadl, Anna Wallerman Ghavanini, Stein Arne Brekke, Joshua Fjelstul, Silje Synnøve Lyder Hermansen, Olof Larsson, Andreas Moberg, Moa Näsström, Michal Ovádek, Tommaso Pavone, and Philipp Schroeder, The Court of Justice of the European Union Database, IUROPA, URL: http://iuropa.pol.gu.se/.\n", sep = "")
+    cat("Fjelstul, Joshua, Johan Lindholm, Daniel Naurin, and Michal Ovádek 2021. \"The CJEU Database Text Corpus (Version ", version, ")\", in Lindholm, Johan, Daniel Naurin, Urska Sadl, Anna Wallerman Ghavanini, Stein Arne Brekke, Joshua Fjelstul, Silje Synnøve Lyder Hermansen, Olof Larsson, Andreas Moberg, Moa Näsström, Michal Ovádek, Tommaso Pavone, and Philipp Schroeder, The Court of Justice of the European Union Database, IUROPA, URL: https://www.iuropa.pol.gu.se/.\n", sep = "")
   }
 
   if (component == "cjeu_database_platform") {
