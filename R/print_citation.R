@@ -24,34 +24,34 @@
 print_citation <- function(component, version) {
 
   if (component == "cjeu_database_platform") {
-    database <- "the CJEU Database Platform"
+    database <- "the IUROPA CJEU Database Platform"
   }
 
   if (component == "cjeu_text_corpus") {
-    database <- "the CJEU Text Corpus"
+    database <- "the IUROPA CJEU Text Corpus"
   }
 
   cat("\n")
-  cat("If you use data from ", database, " in a paper or project, please cite the database:\n", sep = "")
+  cat("If you use data from ", database, " in a paper, please cite the database:\n", sep = "")
   cat("\n")
 
   if (component == "cjeu_database_platform") {
-    cat("Brekke, Stein Arne, Joshua Fjelstul, Silje Synnøve Lyder Hermansen and Daniel Naurin. 2021 \"The CJEU Database Platform: Decisions and Decision-Makers (Stable Release ", version, ")\", in Lindholm, Johan, Daniel Naurin, Urska Sadl, Anna Wallerman Ghavanini, Stein Arne Brekke, Joshua Fjelstul, Silje Synnøve Lyder Hermansen, Olof Larsson, Andreas Moberg, Moa Näsström, Michal Ovádek, Tommaso Pavone, and Philipp Schroeder, The Court of Justice of the European Union Database, IUROPA, URL: https://www.iuropa.pol.gu.se/.\n", sep = "")
+    cat("Brekke, Stein Arne, Joshua Fjelstul, Silje Synnøve Lyder Hermansen and Daniel Naurin. 2022. \"The CJEU Database Platform: Decisions and Decision-Makers\" (Release 0.1), in Lindholm, Johan, Daniel Naurin, Urska Sadl, Anna Wallerman Ghavanini, Stein Arne Brekke, Joshua Fjelstul, Silje Synnøve Lyder Hermansen, Olof Larsson, Andreas Moberg, Moa Näsström, Michal Ovádek, Tommaso Pavone, and Philipp Schroeder, The Court of Justice of the European Union (CJEU) Database, IUROPA, https://iuropa.pol.gu.se/.\n", sep = "")
   }
 
   if (component == "cjeu_text_corpus") {
-    cat("Fjelstul, Joshua, Johan Lindholm, Daniel Naurin, and Michal Ovádek 2021. \"The CJEU Database Text Corpus (Version ", version, ")\", in Lindholm, Johan, Daniel Naurin, Urska Sadl, Anna Wallerman Ghavanini, Stein Arne Brekke, Joshua Fjelstul, Silje Synnøve Lyder Hermansen, Olof Larsson, Andreas Moberg, Moa Näsström, Michal Ovádek, Tommaso Pavone, and Philipp Schroeder, The Court of Justice of the European Union Database, IUROPA, URL: https://www.iuropa.pol.gu.se/.\n", sep = "")
+    cat("Fjelstul, Joshua, Johan Lindholm, Daniel Naurin, and Michal Ovádek 2022. \"The CJEU Database Text Corpus\" (Release 0.1), in Lindholm, Johan, Daniel Naurin, Urska Sadl, Anna Wallerman Ghavanini, Stein Arne Brekke, Joshua Fjelstul, Silje Synnøve Lyder Hermansen, Olof Larsson, Andreas Moberg, Moa Näsström, Michal Ovádek, Tommaso Pavone, and Philipp Schroeder, The Court of Justice of the European Union (CJEU) Database, IUROPA, https://iuropa.pol.gu.se/.\n", sep = "")
   }
 
   if (component == "cjeu_database_platform") {
     cat("\n")
-    cat("Please also cite the paper that introduces the CJEU Database Platform:\n")
+    cat("Please also cite the article that introduces the CJEU Database Platform:\n")
     cat("\n")
-    cat("Stein Arne Brekke, Joshua C. Fjelstul, Silje Synnøve Lyder Hermansen, and Daniel Naurin. The CJEU Database Platform: Decisions and Decision-Makers. Working paper.\n")
+    cat("Stein Arne Brekke, Joshua C. Fjelstul, Silje Synnøve Lyder Hermansen, and Daniel Naurin. 2022. \"The CJEU Database Platform: Decisions and Decision-Makers.\" The Journal of Law and Courts. Forthcoming.\n")
   }
 
   cat("\n")
   cat("Please also cite the iuropa R package:\n")
   cat("\n")
-  cat("Joshua C. Fjelstul (2021). iuropa: An R Interface to the IUROPA CJEU Database. R package version ", as.character(packageVersion("iuropa")), ". https://github.com/jfjelstul/iuropa.\n", sep = "")
+  cat("Joshua C. Fjelstul (2022). iuropa: An R Interface to the IUROPA CJEU Database. R package version ", as.character(packageVersion("iuropa")), ". https://github.com/jfjelstul/iuropa.\n", sep = "")
 }
