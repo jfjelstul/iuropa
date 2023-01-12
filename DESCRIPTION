@@ -6,9 +6,9 @@ Authors@R: person(given = "Joshua",
            role = c("aut", "cre"),
            email = "joshfjelstul@gmail.com",
            comment = c(ORCID = "0000-0002-9494-260X"))
-Description: This package includes tools for downloading data from the IUROPA CJEU Database and for interacting with the IUROPA API. The CJEU Database currently includes the CJEU Database Platform and the CJEU Text Corpus. This package also includes a variety of useful tools for working with CJEU data.
+Description: This package includes tools for interacting with the IUROPA API, including tools for downloading data from the IUROPA CJEU Database via the API.
 URL: https://github.com/jfjelstul/iuropa
-Date: 2022-01-02
+Date: 2023-01-12
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
