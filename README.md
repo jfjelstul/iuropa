@@ -14,7 +14,7 @@ A key feature of The IUROPA Project is the development of a comprehensive databa
 
 The IUROPA Project is financed by the Swedish Research Council (2018-04215), the Norwegian Research Council (223274, PluriCourts), and the European University Institute Research Council (2018-2020).
 
-You can learn more about the IUROPA Project on [our website](http://iuropa.pol.gu.se/).
+You can learn more about The IUROPA Project on [our website](https://iuropa.pol.gu.se/).
 
 ## Installation
 
