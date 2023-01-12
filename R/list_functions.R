@@ -18,7 +18,7 @@
 #'
 #' @export
 list_components <- function() {
-  out <- describe_components(session = NULL)
+  out <- describe_components()
   out <- out$component
   return(out)
 }
