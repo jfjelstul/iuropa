@@ -2,40 +2,37 @@
 % Please edit documentation in R/list_functions.R
 \name{list_variables}
 \alias{list_variables}
-\title{List variables in a IUROPA dataset}
+\title{List the variables in a table}
 \usage{
-list_variables(session, component, dataset)
+list_variables(session = NULL, component, table)
 }
 \arguments{
 \item{session}{An object of class \code{iuropa_session} created by
-\code{authenticate()}.}
+\code{authenticate()}. This argument is only required for components that
+are not yet publicly available.}
 
-\item{component}{A string. The name of a IUROPA component. Use
+\item{component}{A string. The code for a component. Use
 \code{list_components()} to get a list of valid values.}
 
-\item{dataset}{A string. The name of a IUROPA dataset in the specified IUROPA
-component. Use \code{list_datasets()} to get a list of valid values.}
+\item{table}{A string. The name of a table in the specified component. Use
+\code{list_tables()} to get a list of valid values.}
 }
 \value{
 This function returns a string vector containing the names of the
-  variables in the specified dataset.
+  variables in the specified table.
 }
 \description{
-This function lists all of the variables that are currently
-  available in a particular IUROPA dataset. You have to specify a IUROPA
-  component and a IUROPA dataset in that component.
+This function lists the variables that are currently available
+  in a particular table in a component of the IUROPA CJEU Database. You have
+  to specify the code for a component and the name of a table in that
+  component. The values returned by \code{list_components()} and
+  \code{list_tables()} are the values that are valid for these arguments.
 }
 \examples{
 \dontrun{
-session <- authenticate(
-  username = "USERNAME",
-  password = "PASSWORD"
-)
-
-out <- list_variables(
-  session = session,
+out <- list_tables(
   component = "cjeu_database_platform",
-  dataset = "decisions"
+  table = "decisions"
 )}
 
 }

@@ -12,18 +12,19 @@ authenticate(username, password)
 \item{password}{A string. Your IUROPA password.}
 }
 \value{
-This function returns an object of class \code{iuropa_session}.
+This function returns an object of class \code{iuropa_session} that
+  contains the credentials necessary to access password-protected data from
+  the IUROPA API. You can pass this session object into any function that
+  takes a \code{session} argument. If your session times out, you will need
+  to run this function again to create a new session. You can have multiple
+  active sessions at the same time.
 }
 \description{
-This function allows you to authenticate with the IUROPA API. It
-  creates a session. You need to provide your IUROPA username and password to
-  authenticate. This function returns an object of class
-  \code{iuropa_session} that contains the credentials necessary to request
-  password-protected data from the IUROPA API. You need to pass this session
-  object into any function that requires a \code{session} argument. A session
-  times out after 30 minutes. If your session times out, you will need to run
-  this function again to create a new session. You can have multiple active
-  sessions at the same time.
+This function allows users with a IUROPA account to authenticate
+  with the IUROPA API in order to access components of the IUROPA CJEU
+  Database that have not yet been publically released. This function creates
+  a session. You need to provide your IUROPA username and password to
+  authenticate.
 }
 \examples{
 \dontrun{

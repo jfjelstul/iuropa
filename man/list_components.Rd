@@ -2,32 +2,23 @@
 % Please edit documentation in R/list_functions.R
 \name{list_components}
 \alias{list_components}
-\title{List the IUROPA components}
+\title{List the components in the IUROPA CJEU Database}
 \usage{
-list_components(session)
-}
-\arguments{
-\item{session}{An object of class \code{iuropa_session} created by
-\code{authenticate()}.}
+list_components()
 }
 \value{
 This function returns a string vector containing the names of the
-  IUROPA components.
+  components that are currently available via the IUROPA API.
 }
 \description{
-The IUROPA project includes a number of components. This
+The IUROPA CJEU Database includes a number of components. This
   function lists the components that are currently available via the IUROPA
   API. A number of functions in the \code{iuropa} package have a
   \code{component} argument. The values returned by \code{list_components()}
-  are those that are valid for this argument.
+  are the values that are valid for this argument.
 }
 \examples{
 \dontrun{
-session <- authenticate(
-  username = "USERNAME",
-  password = "PASSWORD"
-)
-
-out <- list_components(session)}
+out <- list_components()}
 
 }

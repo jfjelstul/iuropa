@@ -4,26 +4,20 @@
 \alias{print_citation}
 \title{Print the citation for a IUROPA component}
 \usage{
-print_citation(component, version)
+print_citation(component)
 }
 \arguments{
-\item{component}{A string. The name of a IUROPA component. Use
+\item{component}{A string. The code for a component. Use
 \code{list_components()} to get a list of valid values.}
-
-\item{version}{A string. A version number in the format \code{#.#}, such as
-\code{0.1}.}
 }
 \description{
 This function generates the recommended citations for a IUROPA component. You
-need to provide a component id and a version number. The version number
-should be the version number for the IUROPA component, not the version number
-of the \code{R} package.
+need to provide the code for a component.
 }
 \examples{
 \dontrun{
 print_citation(
-  component = "cjeu_database_platform",
-  version = "0.1"
+  component = "cjeu_database_platform"
 )}
 
 }
