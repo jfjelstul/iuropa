@@ -53,7 +53,7 @@ build_api_url <- function(route = NULL, parameters = NULL) {
   return(url)
 }
 
-get_api_route <- function(component, dataset = NULL) {
+get_api_route <- function(component, table = NULL) {
   if (component == "cjeu_database_platform") {
     route_base <- "CJEU-database-platform"
   } else if (component == "cjeu_text_corpus") {
@@ -63,8 +63,8 @@ get_api_route <- function(component, dataset = NULL) {
   } else {
     stop("The argument \"component\" is not valid.")
   }
-  if (!is.null(dataset)) {
-    route <- stringr::str_c(route_base, "/", dataset)
+  if (!is.null(table)) {
+    route <- stringr::str_c(route_base, "/", table)
   } else {
     route <- route_base
   }

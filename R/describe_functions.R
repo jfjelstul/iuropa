@@ -1,102 +1,87 @@
 # Joshua C. Fjelstul, Ph.D.
 # iuropa R Package
 
-#' Describe the IUROPA components
+#' Describe the components in the IUROPA CJEU Database
 #'
-#' @description The IUROPA project includes a number of components. This
-#'   function provides descriptions of all of the components that are currently
+#' @description The IUROPA CJEU Database includes a number of components. This
+#'   function provides descriptions of the components that are currently
 #'   available via the IUROPA API.
 #'
-#' @return This function returns a tibble containing 5 variables. There is one
-#'   observation per IUROPA component.
-#'
-#' @param session An object of class \code{iuropa_session} created by
-#'   \code{authenticate()}.
+#' @return This function returns a tibble. There is one observation per
+#'   component.
 #'
 #' @examples
 #' \dontrun{
-#' session <- authenticate(
-#'   username = "USERNAME",
-#'   password = "PASSWORD"
-#' )
-#'
-#' out <- describe_components(session = session)}
+#' out <- describe_components()}
 #'
 #' @export
-describe_components <- function(session) {
-  route <- get_api_route(component = "cjeu_database", dataset = "components")
+describe_components <- function() {
+  route <- get_api_route(component = "cjeu_database", table = "components")
   url <- build_api_url(route = route)
-  out <- make_simple_request(session = session, url = url)
+  out <- make_simple_request(session = NULL, url = url)
   return(out)
 }
 
-#' Describe datasets in a IUROPA component
+#' Describe the tables in a component
 #'
-#' @description This function provides descriptions of all of the datasets that
-#'   are currently available in a particular IUROPA component. You have to
-#'   specify a IUROPA component.
+#' @description This function provides descriptions of the tables that are
+#'   currently available in a particular component of the IUROPA CJEU Database.
+#'   You have to specify the code for a component. The values returned by
+#'   \code{list_components()} are the values that are valid for this argument.
 #'
-#' @return This function returns a tibble containing 5 variables. There is one
-#'   observation per dataset in the specified component.
+#' @return This function returns a tibble. There is one observation per table in
+#'   the specified component.
 #'
 #' @param session An object of class \code{iuropa_session} created by
-#'   \code{authenticate()}.
-#' @param component A string. The name of a IUROPA component. Use
+#'   \code{authenticate()}. This argument is only required for components that
+#'   are not yet publicly available.
+#' @param component A string. The code for a component. Use
 #'   \code{list_components()} to get a list of valid values.
 #'
 #' @examples
 #' \dontrun{
-#' session <- authenticate(
-#'   username = "USERNAME",
-#'   password = "PASSWORD"
-#' )
-#'
-#' out <- describe_datasets(
-#'   session = session,
+#' out <- describe_tables(
 #'   component = "cjeu_database_platform"
 #' )}
 #'
 #' @export
-describe_datasets <- function(session, component) {
-  route <- get_api_route(component = component, dataset = "datasets")
+describe_tables <- function(session = NULL, component) {
+  route <- get_api_route(component = component, table = "tables")
   url <- build_api_url(route = route)
   out <- make_simple_request(session = session, url = url)
   return(out)
 }
 
-#' Describe variables in a IUROPA dataset
+#' Describe the variables in a table
 #'
-#' @description This function provides descriptions of all of the variables that
-#'   are currently available in a particular IUROPA dataset. You have to specify
-#'   a IUROPA component and a IUROPA dataset in that component.
+#' @description This function provides descriptions for the variables that are
+#'   currently available in a particular table in a component of the IUROPA CJEU
+#'   Database. You have to specify the code for a component and the name of a
+#'   table in that component. The values returned by \code{list_components()}
+#'   and \code{list_tables()} are the values that are valid for these arguments.
 #'
-#' @return This function returns a tibble containing 7 variables. There is one
-#'   observation per variable in the specified dataset.
+#' @return This function returns a tibble. There is one observation per variable
+#'   in the specified table.
 #'
 #' @param session An object of class \code{iuropa_session} created by
-#'   \code{authenticate()}.
-#' @param component A string. The name of a IUROPA component. Use
+#'   \code{authenticate()}. This argument is only required for components that
+#'   are not yet publicly available.
+#' @param component A string. The code for a component. Use
 #'   \code{list_components()} to get a list of valid values.
-#' @param dataset A string. The name of a IUROPA dataset in the specified IUROPA
-#'   component. Use \code{list_datasets()} to get a list of valid values.
+#' @param table A string. The name of a table in the specified component. Use
+#'   \code{list_tables()} to get a list of valid values.
 #'
 #' @examples
 #' \dontrun{
-#' session <- authenticate(
-#'   username = "USERNAME",
-#'   password = "PASSWORD"
-#' )
-#'
 #' out <- describe_variables(
-#'   session = session,
 #'   component = "cjeu_database_platform",
-#'   dataset = "decisions"
+#'   table = "decisions"
 #' )}
 #'
 #' @export
-describe_variables <- function(session, component, dataset) {
-  route <- get_api_route(component = component, dataset = "variables")
-  url <- build_api_url(route = route, parameters = list(dataset = dataset))
+describe_variables <- function(session = NULL, component, table) {
+  route <- get_api_route(component = component, table = "variables")
+  url <- build_api_url(route = route, parameters = list(table = table))
   out <- make_simple_request(session = session, url = url)
   return(out)
 }

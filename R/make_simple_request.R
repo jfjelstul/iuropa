@@ -9,18 +9,26 @@ make_simple_request <- function(session, url, quietly = FALSE) {
   }
 
   # fetch data
-  response <- httr::GET(
-    url,
-    config = httr::add_headers(authorization = session$token),
-    encode = "json"
-  )
+  if (is.null(session)) {
+    response <- httr::GET(
+      url,
+      encode = "json"
+    )
+  } else {
+    response <- httr::GET(
+      url,
+      config = httr::add_headers(authorization = session$token),
+      encode = "json"
+    )
+  }
+
 
   # get response content
   response_content <- rawToChar(response$content)
 
   # error handling
-  if(response$status_code != 200) {
-    stop("API query not successful.")
+  if (response$status_code != 200) {
+    stop(stringr::str_c("API query not successful."))
   }
 
   # parse response and coerce to a tibble
