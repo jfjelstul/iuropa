@@ -71,10 +71,14 @@
 download_data <- function(session = NULL, component, table, filters = NULL, variables = NULL) {
   route <- get_api_route(component = component, table = table)
   parameters <- filters
-  for(i in 1:length(filters)) {
-    parameters[[i]] <- stringr::str_c(parameters[[i]], collapse = ",")
+  if (!is.null(filters)) {
+    for (i in 1:length(filters)) {
+      parameters[[i]] <- stringr::str_c(filters[[i]], collapse = ",")
+    }
   }
-  parameters$variables <- variables
+  if (!is.null(variables)) {
+    parameters$variables <- variables
+  }
   url <- build_api_url(route = route, parameters = parameters)
   out <- make_batch_request(session = session, url = url)
   print_citation(component = component)
