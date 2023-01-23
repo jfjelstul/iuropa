@@ -69,18 +69,42 @@
 #'
 #' @export
 download_data <- function(session = NULL, component, table, filters = NULL, variables = NULL) {
+
+  # Get the API route for the request
   route <- get_api_route(component = component, table = table)
-  parameters <- filters
+
+  # Make an empty list to store parameters to pass to the API
+  parameters <- list()
+
+  # Add filters to the parameter list
+  # Collapse vector to a string if there are multiple values
   if (!is.null(filters)) {
     for (i in 1:length(filters)) {
       parameters[[i]] <- stringr::str_c(filters[[i]], collapse = ",")
     }
+
+    # Add names to list
+    names(parameters) <- names(filters)
   }
+
+  # Add select variables to the parameter list
   if (!is.null(variables)) {
-    parameters$variables <- variables
+    parameters$variables <- stringr::str_c(variables, collapse = ",")
   }
+
+  # Code as NULL if there are no parameters
+  if (length(parameters) == 0) {
+    parameters <- NULL
+  }
+
+  # Build URL for API request
   url <- build_api_url(route = route, parameters = parameters)
+
+  # Run query
   out <- make_batch_request(session = session, url = url)
+
+  # Print citation
   print_citation(component = component)
+
   return(out)
 }

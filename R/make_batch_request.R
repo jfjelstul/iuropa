@@ -6,9 +6,6 @@ make_batch_request <- function(session, url) {
   # API response limit
   api_limit <- 25000
 
-  # API rate limit
-  api_rate_limit <- 12 * 2
-
   # Clean URL
   if (!stringr::str_detect(url, "\\?")) {
     url <- stringr::str_c(url, "?")
@@ -46,7 +43,7 @@ make_batch_request <- function(session, url) {
   batches <- ceiling(n / api_limit)
 
   # Frequency of batch requests
-  freq <- 60 / api_rate_limit * 2
+  freq <- 5
 
   # Print to console
   cat("Observations requested: ", n, ".\n", sep = "")
@@ -67,7 +64,7 @@ make_batch_request <- function(session, url) {
     limit_condition <- stringr::str_c("&limit=", api_limit)
 
     # Offset condition
-    offset_condition <- stringr::str_c("&offset=", api_limit * (i - 1))
+    offset_condition <- stringr::str_c("&offset=", as.integer(api_limit * (i - 1)))
 
     # Batch query
     batch_url <- stringr::str_c(url, limit_condition, offset_condition)
@@ -92,7 +89,7 @@ make_batch_request <- function(session, url) {
     batch <- jsonlite::fromJSON(response_content, flatten = TRUE)$results |> dplyr::as_tibble()
 
     # Print to console
-    progress <- stringr::str_c("\rBatch ", i, " of ", batches, " complete (observations ", api_limit * (i - 1) + 1, " to ", min(i * api_limit, n), " of ", n, ").\n")
+    progress <- stringr::str_c("\rBatch ", i, " of ", batches, " complete (observations ", api_limit * (i - 1) + 1, " to ", as.integer(min(i * api_limit, n)), " of ", n, ").\n")
     cat(progress)
 
     # Countdown
