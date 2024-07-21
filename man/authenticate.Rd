@@ -22,7 +22,7 @@ This function returns an object of class \code{iuropa_session} that
 \description{
 This function allows users with a IUROPA account to authenticate
   with the IUROPA API in order to access components of the IUROPA CJEU
-  Database that have not yet been publically released. This function creates
+  Database that have not yet been publicly released. This function creates
   a session. You need to provide your IUROPA username and password to
   authenticate.
 }

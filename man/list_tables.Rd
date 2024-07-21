@@ -4,15 +4,15 @@
 \alias{list_tables}
 \title{List the tables in a component}
 \usage{
-list_tables(session = NULL, component)
+list_tables(component, session = NULL)
 }
 \arguments{
-\item{session}{An object of class \code{iuropa_session} created by
-\code{authenticate()}. This argument is only required for components that
-are not yet publicly available.}
-
 \item{component}{A string. The code for a component. Use
 \code{list_components()} to get a list of valid values.}
+
+\item{session}{An object of class \code{iuropa_session} created by
+\code{authenticate()}. This argument is only required for content that is
+not yet publicly available.}
 }
 \value{
 This function returns a string vector containing the names of the
@@ -28,7 +28,7 @@ This function lists the tables that are currently available in a
 }
 \examples{
 \dontrun{
-out <- list_tables(
+data <- list_tables(
   component = "cjeu_database_platform"
 )}
 

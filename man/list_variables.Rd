@@ -4,18 +4,18 @@
 \alias{list_variables}
 \title{List the variables in a table}
 \usage{
-list_variables(session = NULL, component, table)
+list_variables(component, table, session = NULL)
 }
 \arguments{
-\item{session}{An object of class \code{iuropa_session} created by
-\code{authenticate()}. This argument is only required for components that
-are not yet publicly available.}
-
 \item{component}{A string. The code for a component. Use
 \code{list_components()} to get a list of valid values.}
 
 \item{table}{A string. The name of a table in the specified component. Use
 \code{list_tables()} to get a list of valid values.}
+
+\item{session}{An object of class \code{iuropa_session} created by
+\code{authenticate()}. This argument is only required for content that is
+not yet publicly available.}
 }
 \value{
 This function returns a string vector containing the names of the
@@ -30,7 +30,7 @@ This function lists the variables that are currently available
 }
 \examples{
 \dontrun{
-out <- list_tables(
+data <- list_variables(
   component = "cjeu_database_platform",
   table = "decisions"
 )}

@@ -5,18 +5,14 @@
 \title{Download IUROPA data}
 \usage{
 download_data(
-  session = NULL,
   component,
   table,
   filters = NULL,
-  variables = NULL
+  variables = NULL,
+  session = NULL
 )
 }
 \arguments{
-\item{session}{An object of class \code{iuropa_session} created by
-\code{authenticate()}. This argument is only required for components that
-are not yet publicly available.}
-
 \item{component}{A string. The code for a component. Use
 \code{list_components()} to get a list of valid values.}
 
@@ -38,6 +34,10 @@ invalid filters.}
 will only include the variables in the vector. Use \code{list_variables()}
 to get a list of valid values. The function will throw an error if you
 provide an invalid variable name.}
+
+\item{session}{An object of class \code{iuropa_session} created by
+\code{authenticate()}. This argument is only required for content that is
+not yet publicly available.}
 }
 \value{
 This function returns a tibble containing the requested data.
@@ -45,7 +45,7 @@ This function returns a tibble containing the requested data.
 \description{
 This function allows you to download data from the IUROPA CJEU
   Database via the IUROPA API. This function provides the same functionality
-  as the IUROPA Download Tool, which is available in the IUROPA web app. You
+  as the IUROPA Download Tool, which is available on the IUROPA website. You
   need to choose a component in the IUROPA CJEU Database and a table in that
   component. For example, you could choose the \code{decisions} table of the
   CJEU Database Platform. You can specify filters to select specific
@@ -65,7 +65,7 @@ The IUROPA API has a rate limit, so this function downloads data
 }
 \examples{
 \dontrun{
-out <- download_data(
+data <- download_data(
   component = "cjeu_database_platform",
   table = "decisions",
   filters = list(
@@ -73,8 +73,7 @@ out <- download_data(
   )
 )
 
-out <- download_data(
-  session = session,
+data <- download_data(
   component = "cjeu_database_platform",
   table = "assignments",
   filters = list(

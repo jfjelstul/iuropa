@@ -4,7 +4,12 @@
 \alias{describe_components}
 \title{Describe the components in the IUROPA CJEU Database}
 \usage{
-describe_components()
+describe_components(session = NULL)
+}
+\arguments{
+\item{session}{An object of class \code{iuropa_session} created by
+\code{authenticate()}. This argument is only required for content that is
+not yet publicly available.}
 }
 \value{
 This function returns a tibble. There is one observation per
@@ -17,6 +22,6 @@ The IUROPA CJEU Database includes a number of components. This
 }
 \examples{
 \dontrun{
-out <- describe_components()}
+data <- describe_components()}
 
 }

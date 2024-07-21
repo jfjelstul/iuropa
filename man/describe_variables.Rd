@@ -4,18 +4,18 @@
 \alias{describe_variables}
 \title{Describe the variables in a table}
 \usage{
-describe_variables(session = NULL, component, table)
+describe_variables(component, table, session = NULL)
 }
 \arguments{
-\item{session}{An object of class \code{iuropa_session} created by
-\code{authenticate()}. This argument is only required for components that
-are not yet publicly available.}
-
 \item{component}{A string. The code for a component. Use
 \code{list_components()} to get a list of valid values.}
 
 \item{table}{A string. The name of a table in the specified component. Use
 \code{list_tables()} to get a list of valid values.}
+
+\item{session}{An object of class \code{iuropa_session} created by
+\code{authenticate()}. This argument is only required for content that is
+not yet publicly available.}
 }
 \value{
 This function returns a tibble. There is one observation per variable
@@ -30,7 +30,7 @@ This function provides descriptions for the variables that are
 }
 \examples{
 \dontrun{
-out <- describe_variables(
+data <- describe_variables(
   component = "cjeu_database_platform",
   table = "decisions"
 )}

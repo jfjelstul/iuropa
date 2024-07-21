@@ -4,7 +4,12 @@
 \alias{list_components}
 \title{List the components in the IUROPA CJEU Database}
 \usage{
-list_components()
+list_components(session = NULL)
+}
+\arguments{
+\item{session}{An object of class \code{iuropa_session} created by
+\code{authenticate()}. This argument is only required for content that is
+not yet publicly available.}
 }
 \value{
 This function returns a string vector containing the names of the
@@ -19,6 +24,6 @@ The IUROPA CJEU Database includes a number of components. This
 }
 \examples{
 \dontrun{
-out <- list_components()}
+data <- list_components()}
 
 }
