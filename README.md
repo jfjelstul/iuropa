@@ -8,9 +8,11 @@ At the core of the IUROPA CJEU Database is the IUROPA CJEU Database Platform, wh
 
 ## About the IUROPA Project
 
-The IUROPA Project (ius + Europa) is a multidisciplinary platform for research on judicial politics in the European Union (EU). The project brings together a network of scholars with a background in law and political science. The IUROPA Project studies the conditions for judicial independence and rule of law against the backdrop of ongoing developments with regards to the judicialization of politics (courts making decisions with political implications) and politicization of courts (efforts from political actors to influence courts).
+IUROPA (ius + Europe) is a multidisciplinary platform for empirical legal studies of the European Union (EU). It brings together a network of scholars with backgrounds in law and political science who share an interest in research on law and politics related to the Court of Justice of the European Union (CJEU).
 
-A key feature of The IUROPA Project is the development of a comprehensive database with detailed information on cases and actors of the Court of Justice of the European Union: the IUROPA CJEU Database. The database includes information on the outcomes, processes and actors involved in the decision-making of the CJEU, compiled into a research-friendly format. The information has been collected from public sources and prepared and analyzed by means of automatic and manual coding.
+A key feature of IUROPA is the development of a comprehensive, reliable, and updated database with detailed information on cases, judgements, and actors involved in the judicial processes of the CJEU: The IUROPA CJEU Database.
+
+The database currently includes six components, with data tables on cases, proceedings, decisions, judges, positions, national courts, and more. The information has been collected from public sources (EUR-Lex, InfoCuria, and the CJEU Registry), cross-validated, and corrected when necessary. The database include information derived from manual coding and includes reliability reports.
 
 The IUROPA Project is financed by the Swedish Research Council (2018-04215), the Norwegian Research Council (223274, PluriCourts), and the European University Institute Research Council (2018-2020).
 
@@ -31,7 +33,7 @@ If you use data from the `iuropa` package in a project or paper, please cite the
 
 The citation for the package is:
 
-> Joshua Fjelstul (2023). iuropa: An R Interface to IUROPA API. R package version 0.1.0.
+> Joshua Fjelstul (2024). iuropa: An R Interface to IUROPA API. R package version 0.2.0.
 
 The `BibTeX` entry for the package is:
 
@@ -39,48 +41,47 @@ The `BibTeX` entry for the package is:
 @Manual{,
   title = {iuropa: An R Interface to the IUROPA API},
   author = {Joshua Fjelstul},
-  year = {2023},
-  note = {R package version 0.1.0},
+  year = {2024},
+  note = {R package version 0.2.0},
 }
 ```
 
-If you use data from the CJEU Database Platform, please also cite the database and the paper that introduces the database.
+If you use data from the CJEU Database Platform, please also cite the database and the article that introduces the database.
 
 The citation for the database is:
 
-> Brekke, Stein Arne, Joshua Fjelstul, Silje Synnøve Lyder Hermansen, and Daniel Naurin. 2023. "The IUROPA CJEU Database Platform: Decisions and Decision-Makers" (Release 1.0), in Lindholm, Johan, Daniel Naurin, Urska Sadl, Anna Wallerman Ghavanini, Stein Arne Brekke, Joshua Fjelstul, Silje Synnøve Lyder Hermansen, Olof Larsson, Andreas Moberg, Moa Näsström, Michal Ovádek, Tommaso Pavone, and Philipp Schroeder, The IUROPA CJEU Database, The IUROPA Project, https://iuropa.pol.gu.se/.
+> Fjelstul, Joshua, Daniel Naurin, Stein Arne Brekke, and Silje Synnøve Lyder Hermansen. 2024. "The IUROPA CJEU Database Platform (v2.00.00)", in Lindholm, Johan, Daniel Naurin, Urska Sadl, Anna Wallerman Ghavanini, Stein Arne Brekke, Joshua Fjelstul, Silje Synnøve Lyder Hermansen, Olof Larsson, Andreas Moberg, Moa Näsström, Michal Ovádek, Tommaso Pavone, and Philipp Schroeder, The Court of Justice of the European Union (CJEU) Database, IUROPA, https://www.iuropa.pol.gu.se/.
 
 The `BibTex` entry for the database is:
 
 ```
-@incollection{CJEUDatabasePlatform,
-  author = {Brekke, Stein Arne and Fjelstul, Joshua and Hermansen, Silje Synn{\o}ve
-    Lyder and Naurin, Daniel},
+@incollection{CJEU_Database_Platform,
+  author = {Fjelstul, Joshua and Naurin, Daniel and Brekke, Stein Arne and Hermansen, Silje Synn{\o}ve Lyder},
   booktitle = {The IUROPA CJEU Database},
-  editor = {Lindholm, Johan and Naurin, Daniel and {\v{S}}adl, Ur{\v{s}}ka and
-    {Wallerman Ghavanini}, Anna and Brekke, Stein Arne and Fjelstul, Joshua and
-    Hermansen, Silje Synn{\o}ve Lyder and Larsson, Olof and Moberg, Andreas and
-    N{\"{a}}sstr{\"{o}}m, Moa and Ov{\'{a}}dek, Michal and Pavone, Tommaso and
-    Schroeder, Philipp},
-  publisher = {IUROPA},
-  title = {{The IUROPA CJEU Database Platform: Decisions and Decision-Makers}},
-  url = {http://iuropa.pol.gu.se},
-  year = {2023}
+  editor = {Lindholm, Johan and Naurin, Daniel and {\v{S}}adl, Ur{\v{s}}ka and Wallerman Ghavanini, Anna and Brekke, Stein Arne and Fjelstul, Joshua and Hermansen, Silje Synn{\o}ve Lyder     and Larsson, Olof and Moberg, Andreas and N{\"{a}}sstr{\"{o}}m, Moa and Ov{\'{a}}dek, Michal and Pavone, Tommaso and Schroeder, Philipp},
+    publisher = {The IUROPA Project},
+  title = {The IUROPA CJEU Database Platform (v2.00.00)},
+  url = {https://www.iuropa.pol.gu.se},
+  year = {2024}
 }
 ```
 
-The citation for the paper is:
+The citation for the article is:
 
-> Stein Arne Brekke, Joshua C. Fjelstul, Silje Synnøve Lyder Hermansen, and Daniel Naurin. 2023. The CJEU Database Platform: Decisions and Decision-Makers. Journal of Law and Courts. Forthcoming.
+> Brekke, Stein Arne, Joshua C. Fjelstul, Silje Synnøve Lyder Hermansen, and Daniel Naurin. 2023. "The CJEU Database Platform: Decisions and Decision-Makers." Journal of Law and Courts 11(2): 389-410. https://doi.org/10.1017/jlc.2022.3.
 
-The `BibTeX` entry for the paper is:
+The `BibTeX` entry for the article is:
 
 ```
-@article{CJEUDatabasePlatformArticle,
+@article{Brekke_Fjelstul_Hermansen_Naurin_2023,
   author = {Brekke, Stein Arne and Fjelstul, Joshua C. and Hermansen, Silje Synn{\o}ve Lyder and Naurin, Daniel},
   title = {The CJEU Database Platform: Decisions and Decision-Makers},
-  journal = {Journal of Law and Courts}
-  year = {2023}
+  journal = {Journal of Law and Courts},
+  year = {2023},
+  volume={11},
+  number={2},
+  pages={389-410},
+  DOI={10.1017/jlc.2022.3}
 }
 ```
 
