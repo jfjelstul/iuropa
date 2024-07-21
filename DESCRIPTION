@@ -1,6 +1,6 @@
 Package: iuropa
 Title: An R Interface to the IUROPA API
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: person(given = "Joshua",
            family = "Fjelstul",
            role = c("aut", "cre"),
@@ -8,8 +8,8 @@ Authors@R: person(given = "Joshua",
            comment = c(ORCID = "0000-0002-9494-260X"))
 Description: This package includes tools for interacting with the IUROPA API, including tools for downloading data from the IUROPA CJEU Database via the API.
 URL: https://github.com/jfjelstul/iuropa
-Date: 2023-01-12
+Date: 2024-07-19
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.2
+RoxygenNote: 7.3.1
