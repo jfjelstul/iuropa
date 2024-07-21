@@ -5,7 +5,7 @@
 #'
 #' @description This function allows you to download data from the IUROPA CJEU
 #'   Database via the IUROPA API. This function provides the same functionality
-#'   as the IUROPA Download Tool, which is available in the IUROPA web app. You
+#'   as the IUROPA Download Tool, which is available on the IUROPA website. You
 #'   need to choose a component in the IUROPA CJEU Database and a table in that
 #'   component. For example, you could choose the \code{decisions} table of the
 #'   CJEU Database Platform. You can specify filters to select specific
@@ -22,13 +22,12 @@
 #'   print the suggested citations for the data. Please use these citations if
 #'   you use the data in a paper.
 #'
-#' @param session An object of class \code{iuropa_session} created by
-#'   \code{authenticate()}. This argument is only required for components that
-#'   are not yet publicly available.
 #' @param component A string. The code for a component. Use
 #'   \code{list_components()} to get a list of valid values.
+#'
 #' @param table A string. The name of a table in the specified
 #'   component. Use \code{list_tables()} to get a list of valid values.
+#'
 #' @param filters A named list. The default is \code{NULL}. Each element in the
 #'   list specifies a filter to apply to the data. The name of each element
 #'   should be the name of a variable in the specified table and the
@@ -39,16 +38,21 @@
 #'   numeric variables, you can add \code{_min} or \code{_max} to the end of the
 #'   variable name to specify a minimum or maximum value. The API will ignore
 #'   invalid filters.
+#'
 #' @param variables A string vector. The default is \code{NULL}. The results
 #'   will only include the variables in the vector. Use \code{list_variables()}
 #'   to get a list of valid values. The function will throw an error if you
 #'   provide an invalid variable name.
 #'
+#' @param session An object of class \code{iuropa_session} created by
+#'   \code{authenticate()}. This argument is only required for content that is
+#'   not yet publicly available.
+#'
 #' @return This function returns a tibble containing the requested data.
 #'
 #' @examples
 #' \dontrun{
-#' out <- download_data(
+#' data <- download_data(
 #'   component = "cjeu_database_platform",
 #'   table = "decisions",
 #'   filters = list(
@@ -56,8 +60,7 @@
 #'   )
 #' )
 #'
-#' out <- download_data(
-#'   session = session,
+#' data <- download_data(
 #'   component = "cjeu_database_platform",
 #'   table = "assignments",
 #'   filters = list(
@@ -68,43 +71,44 @@
 #' )}
 #'
 #' @export
-download_data <- function(session = NULL, component, table, filters = NULL, variables = NULL) {
+download_data <- function(component, table, filters = NULL, variables = NULL, session = NULL) {
 
-  # Get the API route for the request
-  route <- get_api_route(component = component, table = table)
+  # make API route for the request
+  route <- stringr::str_c("database/data", component, table, sep = "/")
 
-  # Make an empty list to store parameters to pass to the API
+  # make an empty list to store parameters to pass to the API
   parameters <- list()
 
-  # Add filters to the parameter list
-  # Collapse vector to a string if there are multiple values
+  # if there are filters, add them to parameters list
   if (!is.null(filters)) {
+
+    # loop through filters and create parameter strings
     for (i in 1:length(filters)) {
       parameters[[i]] <- stringr::str_c(filters[[i]], collapse = ",")
     }
 
-    # Add names to list
+    # add names to list
     names(parameters) <- names(filters)
   }
 
-  # Add select variables to the parameter list
+  # if there are variables, add them to parameter list
   if (!is.null(variables)) {
     parameters$variables <- stringr::str_c(variables, collapse = ",")
   }
 
-  # Code as NULL if there are no parameters
+  # if there are no parameters, code as NULL
   if (length(parameters) == 0) {
     parameters <- NULL
   }
 
-  # Build URL for API request
-  url <- build_api_url(route = route, parameters = parameters)
+  # build the URL for the query
+  url <- build_url(route, parameters)
 
-  # Run query
-  out <- make_batch_request(session = session, url = url)
+  # run query
+  data <- make_batch_request(url = url, session = session)
 
-  # Print citation
+  # print citation
   print_citation(component = component)
 
-  return(out)
+  return(data)
 }
