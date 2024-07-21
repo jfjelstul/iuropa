@@ -77,10 +77,10 @@ The `BibTeX` entry for the paper is:
 
 ```
 @article{CJEUDatabasePlatformArticle,
-author = {Brekke, Stein Arne and Fjelstul, Joshua C. and Hermansen, Silje Synn{\o}ve Lyder and Naurin, Daniel},
-title = {The CJEU Database Platform: Decisions and Decision-Makers},
-journal = {Journal of Law and Courts}
-year = {2023}
+  author = {Brekke, Stein Arne and Fjelstul, Joshua C. and Hermansen, Silje Synn{\o}ve Lyder and Naurin, Daniel},
+  title = {The CJEU Database Platform: Decisions and Decision-Makers},
+  journal = {Journal of Law and Courts}
+  year = {2023}
 }
 ```
 
