@@ -1,100 +1,76 @@
 # Joshua C. Fjelstul, Ph.D.
 # iuropa R Package
 
-make_batch_request <- function(session, url) {
+make_batch_request <- function(url, session) {
 
   # API response limit
-  api_limit <- 25000
+  limit <- 25000
 
-  # Clean URL
+  # set frequency of batch requests
+  frequency <- 5
+
+  # clean URL
   if (!stringr::str_detect(url, "\\?")) {
     url <- stringr::str_c(url, "?")
   }
 
-  # Construct the query
-  n_url <- stringr::str_c(url, "&count=1")
-  n_url <- stringr::str_replace(n_url, "\\?&", "?")
+  # make URL for count of observations
+  count_url <- stringr::str_c(url, "&count=1")
 
-  # Print message
+  # print message
   cat("Requesting data via the IUROPA API...\n")
 
-  # Fire get request
-  response <- httr::GET(
-    n_url,
-    config = httr::add_headers(authorization = session$token),
-    encode = "json"
-  )
+  # get number of rows
+  count_rows <- make_request(url = count_url, session = session, quietly = TRUE)
+  count_rows <- as.numeric(count_rows)
 
-  # Convert raw to string
-  response_content <- rawToChar(response$content)
-
-  # Error handling
-  if (response$status_code != 200) {
-    stop("API query not successful.")
+  # error handling
+  if (count_rows == 0) {
+    cat("There is no data that matches your search parameters\n\n")
+    return(NULL)
   }
 
-  # Parse response
-  n <- jsonlite::fromJSON(response_content, flatten = TRUE)$results |> as.numeric()
+  # print message
+  cat("Response received\n")
 
-  # Print message
-  cat("Response received.\n")
+  # number of batches
+  count_batches <- ceiling(count_rows / limit)
 
-  # Number of batches
-  batches <- ceiling(n / api_limit)
+  # print messages
+  cat("Observations requested: ", count_rows, "\n", sep = "")
+  cat("Downloading", limit, "observations every", frequency, "seconds\n")
+  cat("Number of batches: ", count_batches, "\n", sep = "")
+  cat("Total estimated time: ", round(frequency * (count_batches - 1) / 60, 2), " minutes (", frequency * (count_batches - 1), " seconds)\n", sep = "")
 
-  # Frequency of batch requests
-  freq <- 5
+  # empty list to hold batches
+  data <- list()
 
-  # Print to console
-  cat("Observations requested: ", n, ".\n", sep = "")
-  cat("Downloading", api_limit, "observations every", freq, "seconds.\n")
-  cat("Total estimated time: ", round(freq * (batches - 1) / 60, 2), " minutes (", freq * (batches - 1), " seconds).\n", sep = "")
+  # loop through batches
+  for (i in 1:count_batches) {
 
-  # Empty list to hold batches
-  out <- list()
-
-  # Loop through batches
-  for (i in 1:batches) {
-
-    # Print to console
+    # print message
     clear_console_line()
     cat("\rDownloading...", sep = "")
 
-    # Limit condition
-    limit_condition <- stringr::str_c("&limit=", api_limit)
+    # limit parameter
+    limit_parameter <- stringr::str_c("&limit=", limit)
 
-    # Offset condition
-    offset_condition <- stringr::str_c("&offset=", as.integer(api_limit * (i - 1)))
+    # offset parameter
+    offset_parameter <- stringr::str_c("&offset=", as.integer(limit * (i - 1)))
 
-    # Batch query
-    batch_url <- stringr::str_c(url, limit_condition, offset_condition)
-    batch_url <- stringr::str_replace(batch_url, "\\?&", "?")
+    # construct batch URL
+    batch_url <- stringr::str_c(url, limit_parameter, offset_parameter)
 
-    # Fetch data
-    response <- httr::GET(
-      batch_url,
-      config = httr::add_headers(authorization = session$token),
-      encode = "json"
-    )
+    # make request
+    data[[i]] <- make_request(batch_url, session = session, quietly = TRUE)
 
-    # Convert raw to string
-    response_content <- rawToChar(response$content)
-
-    # Error handling
-    if (response$status_code != 200) {
-      stop("API query not successful.")
-    }
-
-    # Parse response and coerce to a tibble
-    batch <- jsonlite::fromJSON(response_content, flatten = TRUE)$results |> dplyr::as_tibble()
-
-    # Print to console
-    progress <- stringr::str_c("\rBatch ", i, " of ", batches, " complete (observations ", api_limit * (i - 1) + 1, " to ", as.integer(min(i * api_limit, n)), " of ", n, ").\n")
+    # print message
+    progress <- stringr::str_c("\rBatch ", i, " of ", count_batches, " complete (observations ", limit * (i - 1) + 1, " to ", as.integer(min(i * limit, count_rows)), " of ", count_rows, ")\n")
     cat(progress)
 
-    # Countdown
-    if (i != batches) {
-      for (j in freq:1) {
+    # print countdown
+    if (i != count_batches) {
+      for (j in frequency:1) {
         clear_console_line()
         message <- stringr::str_c("\rNext batch in: ", j, sep = "")
         message <- stringr::str_pad(message, side = "right", pad = " ", width = 40)
@@ -102,17 +78,14 @@ make_batch_request <- function(session, url) {
         Sys.sleep(1)
       }
     }
-
-    # Add tibble to output list
-    out[[i]] <- batch
   }
 
-  # Print completion message
+  # print message
   clear_console_line()
-  cat("\rYour download is complete!\n")
+  cat("\rYour download is complete!\n\n")
 
-  # Prepare the output
-  out <- dplyr::bind_rows(out)
+  # prepare the output
+  data <- dplyr::bind_rows(data)
 
-  return(out)
+  return(data)
 }
