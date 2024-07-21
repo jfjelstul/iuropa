@@ -12,15 +12,19 @@
 #' @return This function returns a string vector containing the names of the
 #'   components that are currently available via the IUROPA API.
 #'
+#' @param session An object of class \code{iuropa_session} created by
+#'   \code{authenticate()}. This argument is only required for content that is
+#'   not yet publicly available.
+#'
 #' @examples
 #' \dontrun{
-#' out <- list_components()}
+#' data <- list_components()}
 #'
 #' @export
-list_components <- function() {
-  out <- describe_components()
-  out <- out$component
-  return(out)
+list_components <- function(session = NULL) {
+  data <- describe_components(session)
+  data <- data$component
+  return(data)
 }
 
 #' List the tables in a component
@@ -35,23 +39,24 @@ list_components <- function() {
 #' @return This function returns a string vector containing the names of the
 #'   tables in the specified component.
 #'
-#' @param session An object of class \code{iuropa_session} created by
-#'   \code{authenticate()}. This argument is only required for components that
-#'   are not yet publicly available.
 #' @param component A string. The code for a component. Use
 #'   \code{list_components()} to get a list of valid values.
 #'
+#' @param session An object of class \code{iuropa_session} created by
+#'   \code{authenticate()}. This argument is only required for content that is
+#'   not yet publicly available.
+#'
 #' @examples
 #' \dontrun{
-#' out <- list_tables(
+#' data <- list_tables(
 #'   component = "cjeu_database_platform"
 #' )}
 #'
 #' @export
-list_tables <- function(session = NULL, component) {
-  out <- describe_tables(session, component)
-  out <- out$table
-  return(out)
+list_tables <- function(component, session = NULL) {
+  data <- describe_tables(component, session)
+  data <- data$table
+  return(data)
 }
 
 #' List the variables in a table
@@ -65,24 +70,26 @@ list_tables <- function(session = NULL, component) {
 #' @return This function returns a string vector containing the names of the
 #'   variables in the specified table.
 #'
-#' @param session An object of class \code{iuropa_session} created by
-#'   \code{authenticate()}. This argument is only required for components that
-#'   are not yet publicly available.
 #' @param component A string. The code for a component. Use
 #'   \code{list_components()} to get a list of valid values.
+#'
 #' @param table A string. The name of a table in the specified component. Use
 #'   \code{list_tables()} to get a list of valid values.
 #'
+#' @param session An object of class \code{iuropa_session} created by
+#'   \code{authenticate()}. This argument is only required for content that is
+#'   not yet publicly available.
+#'
 #' @examples
 #' \dontrun{
-#' out <- list_tables(
+#' data <- list_variables(
 #'   component = "cjeu_database_platform",
 #'   table = "decisions"
 #' )}
 #'
 #' @export
-list_variables <- function(session = NULL, component, table) {
-  out <- describe_variables(session, component, table)
-  out <- out$variable
-  return(out)
+list_variables <- function(component, table, session = NULL) {
+  data <- describe_variables(component, table, session)
+  data <- data$variable
+  return(data)
 }
