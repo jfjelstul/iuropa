@@ -46,7 +46,7 @@ The `BibTeX` entry for the package is:
 }
 ```
 
-If you use data from the CJEU Database Platform, please also cite the database and the paper that introduces the database.
+If you use data from the CJEU Database Platform, please also cite the database and the article that introduces the database.
 
 The citation for the database is:
 
@@ -66,11 +66,11 @@ The `BibTex` entry for the database is:
 }
 ```
 
-The citation for the paper is:
+The citation for the article is:
 
 > Brekke, Stein Arne, Joshua C. Fjelstul, Silje Synnøve Lyder Hermansen, and Daniel Naurin. 2023. "The CJEU Database Platform: Decisions and Decision-Makers." Journal of Law and Courts 11(2): 389-410. https://doi.org/10.1017/jlc.2022.3.
 
-The `BibTeX` entry for the paper is:
+The `BibTeX` entry for the article is:
 
 ```
 @article{Brekke_Fjelstul_Hermansen_Naurin_2023,
