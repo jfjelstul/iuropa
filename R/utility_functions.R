@@ -31,12 +31,12 @@ ping_api <- function() {
   if(status == 200) {
 
     # extract message
-    message <- res |>
+    data <- res |>
       httr2::resp_body_json(simplifyVector = TRUE) |>
-      purrr::pluck("message")
+      purrr::pluck("data")
 
     # print message
-    cat(message)
+    cat(data)
 
   # if not successful...
   } else {
@@ -53,7 +53,8 @@ run_quietly <- function(x) {
 }
 
 get_api_address <- function() {
-  return("https://api.iuropa.pol.gu.se/")
+  # return("https://api.iuropa.pol.gu.se/")
+  "http://localhost:4000/"
 }
 
 build_url <- function(route = NULL, parameters = NULL) {
