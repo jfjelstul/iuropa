@@ -68,7 +68,7 @@ authenticate <- function(username, password) {
     # extract content
     token <- res |>
       httr2::resp_body_json(simplifyVector = TRUE) |>
-      purrr::pluck("token")
+      purrr::pluck("data")
 
     # create session
     session <- list(
