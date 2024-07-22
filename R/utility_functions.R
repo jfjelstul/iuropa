@@ -53,8 +53,7 @@ run_quietly <- function(x) {
 }
 
 get_api_address <- function() {
-  # return("https://api.iuropa.pol.gu.se/")
-  "http://localhost:4000/"
+  return("https://api.iuropa.pol.gu.se/")
 }
 
 build_url <- function(route = NULL, parameters = NULL) {
